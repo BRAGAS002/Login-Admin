@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - User Management</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="admin.js" defer></script>
+</head>
+<body class="dashboard-body">
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>Admin Portal</h2>
+        </div>
+        <ul class="nav-links">
+            <li class="active"><a href="admin.html"><i class="icon">👤</i> User Management</a></li>
+            <li><a href="admin-meters.html"><i class="icon">🔌</i> Meter Management</a></li>
+            <li><a href="admin-reports.html"><i class="icon">📈</i> System Reports</a></li>
+            <li><a href="admin-settings.html"><i class="icon">⚙️</i> System Settings</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="logout-button">Logout</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-bar">
+                <input type="search" placeholder="Search users...">
+            </div>
+            <div class="user-info">
+                <span class="user-name">Admin</span>
+                <div class="user-avatar">AD</div>
+            </div>
+        </header>
+
+        <div class="admin-container">
+            <!-- User Management Section -->
+            <section class="admin-section">
+                <div class="section-header">
+                    <h2>User Management</h2>
+                    <button class="add-btn" onclick="showAddUserModal()">Add New User</button>
+                </div>
+
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>001</td>
+                                <td>John Doe</td>
+                                <td>john@example.com</td>
+                                <td>User</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>
+                                    <button class="action-btn edit">Edit</button>
+                                    <button class="action-btn delete">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>002</td>
+                                <td>Jane Smith</td>
+                                <td>jane@example.com</td>
+                                <td>Manager</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>
+                                    <button class="action-btn edit">Edit</button>
+                                    <button class="action-btn delete">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Meter Management Section -->
+            <section class="admin-section">
+                <div class="section-header">
+                    <h2>Electric Meter Overview</h2>
+                    <button class="add-btn" onclick="showAddMeterModal()">Add New Meter</button>
+                </div>
+
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Meter ID</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Last Reading (kWh)</th>
+                                <th>Last Updated</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MT001</td>
+                                <td>Building A</td>
+                                <td><span class="status-badge active">Online</span></td>
+                                <td>45,678</td>
+                                <td>2024-03-20 15:30</td>
+                                <td>
+                                    <button class="action-btn edit">Edit</button>
+                                    <button class="action-btn delete">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- System Logs Section -->
+            <section class="admin-section">
+                <div class="section-header">
+                    <h2>System Logs</h2>
+                    <button class="export-btn">Export Logs</button>
+                </div>
+
+                <div class="logs-container">
+                    <div class="log-entry">
+                        <span class="log-time">2024-03-20 14:30:25</span>
+                        <span class="log-type info">INFO</span>
+                        <span class="log-message">User login: john@example.com</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-03-20 14:28:15</span>
+                        <span class="log-type warning">WARNING</span>
+                        <span class="log-message">Failed login attempt: unknown@example.com</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">2024-03-20 14:25:00</span>
+                        <span class="log-type error">ERROR</span>
+                        <span class="log-message">Meter MT002 connection timeout</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Add User Modal -->
+        <div id="addUserModal" class="modal">
+            <div class="modal-content">
+                <h3>Add New User</h3>
+                <form id="addUserForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select name="role" required>
+                            <option value="user">User</option>
+                            <option value="manager">Manager</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Initial Password</label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="save-btn">Add User</button>
+                        <button type="button" class="cancel-btn" onclick="closeModal('addUserModal')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Add Meter Modal -->
+        <div id="addMeterModal" class="modal">
+            <div class="modal-content">
+                <h3>Add New Meter</h3>
+                <form id="addMeterForm">
+                    <div class="form-group">
+                        <label>Meter ID</label>
+                        <input type="text" name="meterId" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" name="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select name="type" required>
+                            <option value="electric">Electric</option>
+                            <option value="water">Water</option>
+                            <option value="gas">Gas</option>
+                        </select>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="save-btn">Add Meter</button>
+                        <button type="button" class="cancel-btn" onclick="closeModal('addMeterModal')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

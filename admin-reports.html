@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - System Reports</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="admin.js" defer></script>
+</head>
+<body class="dashboard-body">
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>Admin Portal</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="admin.html"><i class="icon">👤</i> User Management</a></li>
+            <li><a href="admin-meters.html"><i class="icon">🔌</i> Meter Management</a></li>
+            <li class="active"><a href="admin-reports.html"><i class="icon">📈</i> System Reports</a></li>
+            <li><a href="admin-settings.html"><i class="icon">⚙️</i> System Settings</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <button id="logoutBtn" class="logout-button">Logout</button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-bar">
+                <input type="search" placeholder="Search reports...">
+            </div>
+            <div class="user-info">
+                <span class="user-name">Admin</span>
+                <div class="user-avatar">AD</div>
+            </div>
+        </header>
+
+        <div class="admin-container">
+            <section class="admin-section">
+                <div class="section-header">
+                    <h2>System Activity Reports</h2>
+                    <div class="report-actions">
+                        <select class="report-period">
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                        <button class="export-btn">Export Report</button>
+                    </div>
+                </div>
+
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Event Type</th>
+                                <th>Description</th>
+                                <th>User</th>
+                                <th>Timestamp</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Login</td>
+                                <td>User login successful</td>
+                                <td>john@example.com</td>
+                                <td>2024-03-20 15:30</td>
+                                <td><span class="status-badge active">Success</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="admin-section">
+                <div class="section-header">
+                    <h2>Error Logs</h2>
+                </div>
+                <div class="logs-container">
+                    <div class="log-entry">
+                        <span class="log-time">2024-03-20 14:30:25</span>
+                        <span class="log-type error">ERROR</span>
+                        <span class="log-message">Failed to connect to meter MT002</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html> 

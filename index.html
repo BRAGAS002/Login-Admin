@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - Login</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="admin-login.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeAmpgqAAAAAJoIMEJwORbx7ZKsmODLUEQD64K6"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-container admin-login">
+            <div class="logo-section">
+                <h1>Admin Portal</h1>
+                <p class="subtitle">System Administration</p>
+            </div>
+            
+            <form class="login-form" id="adminLoginForm">
+                <div class="form-group">
+                    <label for="username">Admin Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="g-recaptcha" data-sitekey="6Lc6Rq4aAAAAAG4j0qg0v5Hqy8H0Yy2iQ8qJrjBj"></div>
+
+                <div class="form-group">
+                    <button type="submit" class="login-button admin-login-btn">Admin Login</button>
+                </div>
+
+                <div id="loginError" class="error-message" style="display: none;"></div>
+
+                <div class="form-footer">
+                    <p><a href="index.html">Return to User Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="admin-auth.js"></script>
+</body>
+</html> 
